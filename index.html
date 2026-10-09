@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abdul-Hafis Jimoh — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root { --ink:#0f172a; --text:#334155; --muted:#64748b; --line:#e2e8f0; --wash:#f8fafc; --accent:#1d4ed8; --accent-soft:#eff4ff; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: var(--text); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  h1, h2, h3, .exp-role, .role-title, .nav-logo { font-family: 'Newsreader', Georgia, serif; color: var(--ink); font-weight: 600; letter-spacing: -0.01em; }
+
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding: 0 clamp(20px, 5vw, 64px); height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 1.25rem; }
+  .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.nav-cta { background: var(--ink); color: #fff; padding: 8px 18px; border-radius: 6px; }
+  .nav-links a.nav-cta:hover { background: var(--accent); color: #fff; }
+
+  .hero { padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px); background: var(--wash); border-bottom: 1px solid var(--line); }
+  .hero-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 5.5vw, 4.4rem); line-height: 1.04; letter-spacing: -0.02em; }
+  .hero-role { margin-top: 14px; color: var(--accent); font-weight: 600; font-size: 1.05rem; }
+  .hero-tagline { margin-top: 22px; max-width: 560px; font-size: 1.12rem; color: var(--text); line-height: 1.7; }
+  .hero-actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--ink); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-secondary { color: var(--ink); background: #fff; border-color: #cbd5e1; }
+  .btn-secondary:hover { border-color: var(--ink); }
+  .glance { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 28px; }
+  .glance div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .glance div:last-child { border-bottom: none; }
+  .glance dt { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+  .glance dd { color: var(--ink); font-weight: 500; }
+
+  section { padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 64px); }
+  #about, #skills { background: #fff; }
+  #experience, #certifications { background: var(--wash); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .section-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 64px; }
+  .section-inner > * { grid-column: 2; }
+  .section-title { grid-column: 1; grid-row: 1 / span 40; align-self: start; position: sticky; top: 96px; font-size: 1.6rem; line-height: 1.2; }
+
+  .about-grid { display: block; }
+  .lead { font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.25; margin-bottom: 22px; max-width: 640px; }
+  .about-text p { max-width: 650px; margin-bottom: 16px; }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+  .about-sidebar { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .sidebar-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; font-family: 'Inter', sans-serif; }
+  .sidebar-card p { font-size: 0.92rem; color: var(--muted); }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { background: #f1f5f9; color: var(--text); font-size: 0.82rem; font-weight: 500; padding: 4px 10px; border-radius: 6px; }
+  .tag.gold { background: var(--accent-soft); color: #1e40af; }
+
+  #experience .exp-card { padding: 0 0 52px; margin-top: 0 !important; }
+  #experience .exp-card + .exp-card { padding-top: 40px; border-top: 1px solid var(--line); }
+  #experience .exp-card:last-child { padding-bottom: 0; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 24px; margin-bottom: 24px; }
+  .exp-role { font-size: 1.5rem; line-height: 1.2; }
+  .exp-company { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+  .exp-meta { text-align: left; }
+  .exp-dates, .role-dates { font-size: 0.88rem; color: var(--muted); font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .exp-list { list-style: none; display: grid; gap: 8px; }
+  .exp-list li { position: relative; padding-left: 18px; font-size: 0.96rem; max-width: 720px; }
+  .exp-list li::before { content: ''; position: absolute; left: 1px; top: 0.72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .role-block { position: relative; margin-left: 4px; padding: 0 0 36px 28px; border-left: 1px solid #cbd5e1; }
+  .role-block:last-child { padding-bottom: 0; border-left-color: transparent; }
+  .role-block::before { content: ''; position: absolute; left: -5px; top: 9px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+  .role-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 20px; }
+  .role-title { font-size: 1.2rem; }
+  .role-products { font-size: 0.9rem; color: var(--muted); margin: 4px 0 14px; max-width: 720px; }
+  .role-products strong, .role-skills strong { color: var(--ink); font-weight: 600; }
+  .role-skills { font-size: 0.85rem; color: var(--muted); margin-top: 14px; max-width: 720px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px; }
+  .skill-card { border-top: 2px solid var(--ink); padding-top: 14px; }
+  .skill-card h4 { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .skill-list { list-style: none; }
+  .skill-list li { font-size: 0.92rem; color: var(--text); padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .skill-list li:last-child { border-bottom: none; }
+
+  .cred-heading { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 40px 0 4px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+  .cred-heading:first-of-type { margin-top: 0; }
+  .certs-grid { display: block; }
+  .cert-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .cert-card h4 { grid-column: 1; grid-row: 1; font-family: 'Inter', sans-serif; font-size: 0.98rem; font-weight: 600; color: var(--ink); }
+  .cert-card p { grid-column: 1; grid-row: 2; font-size: 0.9rem; color: var(--muted); margin-top: 2px; max-width: 620px; }
+  .cert-issuer { grid-column: 2; grid-row: 1; font-size: 0.86rem; color: var(--muted); text-align: right; }
+
+  #contact { background: var(--ink); }
+  #contact .section-title { color: #fff; }
+  #contact .section-sub { color: #cbd5e1; max-width: 560px; margin-bottom: 28px; font-size: 1.05rem; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-link { color: #fff; text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 11px 20px; border: 1px solid #475569; border-radius: 6px; }
+  .contact-link:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
+  footer { background: var(--ink); border-top: 1px solid #1e293b; padding: 24px clamp(20px, 5vw, 64px); }
+  footer p { max-width: 1120px; margin: 0 auto; color: #94a3b8; font-size: 0.85rem; }
+
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 760px) {
+    .nav-links li:not(:last-child) { display: none; }
+    .section-inner { display: block; }
+    .section-title { position: static; margin-bottom: 24px; }
+    .cert-card { grid-template-columns: 1fr; }
+    .cert-issuer { grid-column: 1; grid-row: 2; text-align: left; margin-top: 2px; }
+    .cert-card p { grid-row: 3; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Abdul-Hafis Jimoh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Education</a></li>
+    <li><a class="nav-cta" href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <h1>Abdul-Hafis Jimoh</h1>
+      <p class="hero-role">Product Manager</p>
+      <p class="hero-tagline">I turn ideas and user needs into products. Hands-on across product research, strategy, PRDs, QA, and go-to-market in EdTech, HealthTech, FinTech, Gaming, SaaS, Entertainment, and Logistics.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="https://www.linkedin.com/in/abdul-hafis-jimoh-013042247/" target="_blank" rel="noopener" class="btn btn-secondary">View LinkedIn</a>
+      </div>
+    </div>
+    <dl class="glance">
+      <div><dt>Current role</dt><dd>Product Manager / QA Lead</dd></div>
+      <div><dt>Company</dt><dd>Maekandex Communications Limited</dd></div>
+      <div><dt>Experience</dt><dd>3+ years in product</dd></div>
+      <div><dt>Markets</dt><dd>Nigeria and Ghana</dd></div>
+      <div><dt>Based in</dt><dd>Lagos, Nigeria</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3 class="lead">A PM who thinks like a systems engineer.</h3>
+        <p>Before product management, I spent years leading safety operations on offshore and onshore engineering sites. That experience taught me something most PMs spend years learning: <strong>the real cost of ignoring user pain points is failure.</strong></p>
+        <p>As a Health & Safety Officer, I conducted audits, interviewed teams, identified gaps, prioritised fixes, and measured outcomes — root-cause analysis, stakeholder alignment, and cross-functional execution under pressure. That is, fundamentally, the product management mindset. I didn't transition into PM; I recognised that I had been doing it all along.</p>
+        <p>Today I combine that operational rigour with hands-on product craft — research, strategy, PRDs, QA leadership, and go-to-market — across products in Nigeria and Ghana. I also use <strong>vibe coding and AI-assisted development</strong> to build working product pages, including the Trios landing page. I'm targeting <strong>B2B SaaS and fintech roles</strong> where structured thinking and user-centred design converge.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-card">
+          <h4>PM &amp; AI Toolkit</h4>
+          <div class="tag-row">
+            <span class="tag">Jira</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Notion</span>
+            <span class="tag">Asana</span>
+            <span class="tag">Slack</span>
+            <span class="tag">ChatGPT</span>
+            <span class="tag">Claude</span>
+            <span class="tag">Kimi</span>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Core Methodologies</h4>
+          <div class="tag-row">
+            <span class="tag gold">Agile / Scrum</span>
+            <span class="tag gold">Sprint Planning</span>
+            <span class="tag gold">QA &amp; UAT</span>
+            <span class="tag gold">Release Management</span>
+            <span class="tag gold">Risk Management</span>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Technical Fluency</h4>
+          <p>HTML · CSS · SQL · REST APIs · Vibe Coding &amp; AI-assisted development — enough to speak fluently with engineers, assess feasibility, and build working product pages myself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Maekandex Communications Limited</div>
+          <div class="exp-company">Product &amp; Operations Team · Nigeria &amp; Ghana markets</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-dates">Feb 2023 – Present</div>
+        </div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><div class="role-title">Product Manager / QA Lead</div><div class="role-dates">Oct 2025 – Present</div></div>
+        <div class="role-products"><strong>Products:</strong> BuzzyCash · Pluser Games · LITeGre Prediction · LITeGreBet · KlassBet · LetsMeet · Navo · JustJob · Buzz9ja · Health &amp; Legal Platforms</div>
+        <ul class="exp-list" style="margin-bottom:12px;">
+          <li>Lead product strategy, roadmap planning, product discovery, and go-to-market execution across multiple products in FinTech, Gaming, SportsTech, SaaS, HealthTech, LegalTech, Dating, and Entertainment.</li>
+          <li>Partner directly with founders and stakeholders to define product direction, prioritise opportunities, and make launch and growth decisions.</li>
+          <li>Own PRDs, user stories, acceptance criteria, feature prioritisation, and product requirements from discovery through development and launch.</li>
+          <li>Lead user research, surveys, usability testing, and market research to validate problems and guide product decisions.</li>
+          <li>Lead QA across multiple products, overseeing functional, regression, usability, UAT, and cross-device testing before release.</li>
+          <li>Manage defect tracking and work closely with engineering and design teams to resolve issues and maintain release quality.</li>
+          <li>Support products across Nigeria and Ghana, adapting product decisions to different users, markets, and operational requirements.</li>
+          <li>Use vibe coding and AI-assisted development to build working product pages, including the Trios landing page.</li>
+        </ul>
+        <div class="role-skills"><strong>Key skills:</strong> Product Strategy · Product Discovery · Roadmapping · PRDs · Go-to-Market · Product Analytics · User Research · Feature Prioritisation · QA Leadership · UAT · Agile/Scrum · Stakeholder Management · Cross-functional Leadership</div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><div class="role-title">Product Manager</div><div class="role-dates">Jul 2025 – Sep 2025</div></div>
+        <div class="role-products"><strong>Products:</strong> LetsMeet · LITeGre Prediction · JustJob · Navo · Health &amp; Legal Products</div>
+        <ul class="exp-list" style="margin-bottom:12px;">
+          <li>Took ownership of product initiatives from discovery and requirements through development and launch.</li>
+          <li>Translated business and user requirements into PRDs, user stories, product flows, and actionable specifications for engineering and design teams.</li>
+          <li>Conducted user research and usability testing to identify pain points and improve product experience.</li>
+          <li>Worked with developers and designers to define scope, prioritise features, and maintain delivery timelines.</li>
+          <li>Contributed to product strategy and go-to-market planning across multiple products.</li>
+          <li>Used customer feedback, research findings, and product requirements to support prioritisation and product decisions.</li>
+        </ul>
+        <div class="role-skills"><strong>Key skills:</strong> Product Ownership · Product Discovery · PRD Writing · Roadmapping · User Research · Usability Testing · Feature Prioritisation · Agile Delivery · Stakeholder Collaboration</div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><div class="role-title">Associate Product Manager</div><div class="role-dates">Jan 2024 – Jun 2025</div></div>
+        <div class="role-products"><strong>Products:</strong> LetsMeet · Navo · JustJob · Buzz9ja · KlassBet · Gaming &amp; SaaS Products</div>
+        <ul class="exp-list" style="margin-bottom:12px;">
+          <li>Supported the development of multiple products across Gaming, SaaS, Dating, Entertainment, and consumer platforms.</li>
+          <li>Conducted user interviews, surveys, usability testing, and market research to understand customer needs and validate product ideas.</li>
+          <li>Assisted in writing and maintaining PRDs, user stories, acceptance criteria, and product documentation.</li>
+          <li>Worked closely with designers and developers to translate requirements into product features and user flows.</li>
+          <li>Supported roadmap planning, feature prioritisation, sprint planning, and product reviews.</li>
+          <li>Analysed user feedback and research findings to identify product improvements and new opportunities.</li>
+          <li>Participated in testing and release reviews to ensure features met product requirements.</li>
+        </ul>
+        <div class="role-skills"><strong>Key skills:</strong> Product Research · User Interviews · Product Documentation · PRDs · User Stories · Usability Testing · Market Research · Competitive Analysis · Agile/Scrum · Feature Prioritisation · Figma · Jira</div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><div class="role-title">Product Management Intern</div><div class="role-dates">Feb 2023 – Dec 2023</div></div>
+        <div class="role-products"><strong>Products:</strong> Health · Legal · LetsMeet · Early-stage Digital Products</div>
+        <ul class="exp-list" style="margin-bottom:12px;">
+          <li>Supported product research and discovery activities across health, legal, and consumer-focused digital products.</li>
+          <li>Conducted user research, surveys, and competitor analysis to understand customer needs and market opportunities.</li>
+          <li>Assisted with PRDs, product documentation, user stories, and feature requirements.</li>
+          <li>Worked with designers and developers to translate product ideas into practical user flows and features.</li>
+          <li>Participated in usability testing and QA to identify issues and improve product experience.</li>
+          <li>Supported product planning, sprint activities, stakeholder discussions, and release preparation.</li>
+          <li>Gained hands-on experience across the full product lifecycle from research and ideation to development and testing.</li>
+        </ul>
+        <div class="role-skills"><strong>Key skills:</strong> User Research · Market Research · Competitive Analysis · Product Discovery · PRDs · User Stories · Usability Testing · QA Testing · Agile/Scrum · Product Documentation</div>
+      </div>
+    </div>
+
+    <div class="exp-card" style="margin-top: 32px;">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Associate Project Manager</div>
+          <div class="exp-company">Viaspark Technology Limited</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-dates">Dec 2022 – Feb 2023</div>
+        </div>
+      </div>
+      <ul class="exp-list" style="margin-bottom: 0;">
+        <li>Coordinated technology projects from planning and requirements gathering through execution and delivery, working with developers, designers, and other stakeholders.</li>
+        <li>Supported project planning, task allocation, progress tracking, timelines, and delivery across multiple concurrent initiatives.</li>
+        <li>Worked with stakeholders to translate business requirements into clear project tasks, deliverables, and priorities.</li>
+        <li>Monitored project progress, identified delivery risks and blockers, and worked with teams to keep projects on track.</li>
+        <li>Facilitated communication between technical and non-technical stakeholders, ensuring requirements and expectations were clearly understood.</li>
+        <li>Supported quality reviews, user acceptance testing, issue tracking, and release preparation before project delivery.</li>
+        <li>Maintained project documentation, status reports, timelines, and other delivery records.</li>
+        <li>Contributed to process improvements that helped teams work more efficiently and maintain better visibility across project activities.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card" style="margin-top: 32px;">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Health &amp; Safety Officer (NYSC)</div>
+          <div class="exp-company">Jelsak Auto Clinic · Ikorodu, Lagos</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-dates">Oct 2021 – Oct 2022</div>
+        </div>
+      </div>
+      <ul class="exp-list" style="margin-bottom: 0;">
+        <li>Partnered with management to analyse HSE performance data and recommend process improvements that raised operational efficiency and reduced risk.</li>
+        <li>Conducted proactive safety audits, identified hazards, and implemented corrective actions across daily workshop operations, resulting in fewer incidents and fewer hazards found over time.</li>
+        <li>Designed safety improvement plans and delivered training, toolbox meetings, and routine HSE drills, improving staff safety behaviour and internal audit outcomes.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card" style="margin-top: 32px;">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">HSE / Project Manager</div>
+          <div class="exp-company">Sonik Platinum Engineering Ltd · Warri, Delta</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-dates">Aug 2017 – Dec 2018</div>
+        </div>
+      </div>
+      <ul class="exp-list" style="margin-bottom: 0;">
+        <li>Managed and led a major project team, overseeing scheduling, progress tracking, and management reporting, and delivered it on time, within budget, and with zero lost-time injuries.</li>
+        <li>Handled project documentation and logistics across onshore and offshore operations, keeping deliverables, resources, and records organised.</li>
+        <li>Conducted safety audits across onshore and offshore operations, identifying hazards and driving corrective actions that strengthened compliance monitoring and reduced safety violations.</li>
+        <li>Led incident investigations using root-cause analysis to identify failure points and implement corrective measures that reduced recurrence of incidents.</li>
+        <li>Designed and delivered targeted safety training programs, reinforcing operational safety standards and improving workforce compliance across teams.</li>
+        <li>Collaborated with cross-functional teams to develop HSE documentation and ensure alignment with regulatory and operational safety requirements.</li>
+        <li>Helped achieve over 10,000 accumulated man-hours across multiple projects.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Product Strategy &amp; Planning</h4>
+        <ul class="skill-list">
+          <li>Product Strategy</li>
+          <li>Product Vision</li>
+          <li>Roadmap Planning</li>
+          <li>Go-to-Market Strategy</li>
+          <li>Product Lifecycle Management</li>
+          <li>Feature Prioritisation</li>
+          <li>Product-Market Fit</li>
+          <li>Business Case Development</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Product Development</h4>
+        <ul class="skill-list">
+          <li>PRD Authorship</li>
+          <li>User Stories</li>
+          <li>Acceptance Criteria</li>
+          <li>Feature Definition</li>
+          <li>Agile / Scrum</li>
+          <li>Backlog Management</li>
+          <li>MVP Development</li>
+          <li>Cross-functional Collaboration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Analytics &amp; Growth</h4>
+        <ul class="skill-list">
+          <li>Product Analytics</li>
+          <li>KPI Definition</li>
+          <li>A/B Testing</li>
+          <li>Conversion Optimisation</li>
+          <li>User Engagement</li>
+          <li>Retention Analysis</li>
+          <li>Funnel Analysis</li>
+          <li>Data-Driven Decision Making</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Delivery, QA &amp; Leadership</h4>
+        <ul class="skill-list">
+          <li>QA &amp; UAT</li>
+          <li>Functional &amp; Regression Testing</li>
+          <li>Release Management</li>
+          <li>Risk Management</li>
+          <li>Project Management</li>
+          <li>Stakeholder Management</li>
+          <li>Team Leadership</li>
+          <li>Sprint Planning</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Product Discovery &amp; Research</h4>
+        <ul class="skill-list">
+          <li>User Interviews &amp; Surveys</li>
+          <li>Usability Testing</li>
+          <li>Market Research</li>
+          <li>Competitive Analysis</li>
+          <li>Pain Point Mapping</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>AI &amp; Product Tools</h4>
+        <ul class="skill-list">
+          <li>Jira · Figma · Notion</li>
+          <li>Asana · Slack</li>
+          <li>ChatGPT · Claude · Kimi</li>
+          <li>AI-Assisted Product Development</li>
+          <li>Vibe Coding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <h2 class="section-title">Education and certifications</h2>
+
+    <h3 class="cred-heading">Education</h3>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">Lagos State Polytechnic, Ikorodu · 2021</div>
+        <h4>Higher National Diploma (HND), Mechanical Engineering</h4>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Lagos State Polytechnic, Ikorodu · 2015</div>
+        <h4>National Diploma (ND), Mechanical Engineering</h4>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Federal Government College, Warri, Delta State · 2012</div>
+        <h4>Senior Secondary Certificate Examination (SSCE)</h4>
+      </div>
+    </div>
+
+    <h3 class="cred-heading">Product &amp; Project Management</h3>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">Product School · May 2025</div>
+        <h4>Product Discovery Micro-Certification</h4>
+        <p>Focused training on modern discovery techniques — user research, problem framing, assumption testing, and building validated product insights.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Pendo.io · Apr 2025</div>
+        <h4>Product Management Basics</h4>
+        <p>Foundational PM skills covering product strategy, user research methodologies, and the full product development lifecycle using modern tooling.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Terra Learning · Feb 2025</div>
+        <h4>Product Management Certification</h4>
+        <p>Hands-on training in product strategy, user research, PRD documentation, and Agile development using Jira, Figma, Slack, and Notion.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Google · Coursera · 2022 – 2023</div>
+        <h4>Google Project Management Professional Certificate</h4>
+        <p>Expertise in project planning, risk management, Agile methodologies, and stakeholder communication across project lifecycles.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">British Project Management Academy (BPMA) · Oct 2022</div>
+        <h4>Project Management Graduate Certificate</h4>
+        <p>Advanced project management competencies including strategic planning, leadership, and resource management frameworks.</p>
+      </div>
+    </div>
+
+    <h3 class="cred-heading">Health &amp; Safety</h3>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">ISPON, Lagos · 2022</div>
+        <h4>HSE Level 3</h4>
+        <p>Risk assessment, emergency response, and regulatory compliance in high-pressure industrial environments.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">ISPON, Warri · 2017</div>
+        <h4>HSE Levels 1 &amp; 3</h4>
+        <p>Foundational and advanced health, safety, and environment training for industrial and project sites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Open to PM roles in B2B SaaS, fintech, or any product team solving real operational problems at scale.</p>
+    <div class="contact-links">
+      <a href="mailto:jimoh389@gmail.com" class="contact-link">jimoh389@gmail.com</a>
+      <a href="https://www.linkedin.com/in/abdul-hafis-jimoh-013042247/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+      <a href="https://medium.com/@hafisjimoh9/bootcamp-experience-leading-a-remote-product-management-team-a019bdbf1776" target="_blank" rel="noopener" class="contact-link">Medium articles</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Abdul-Hafis Jimoh · Product Manager</p>
+  
+</footer>
+
+</body>
+</html>
